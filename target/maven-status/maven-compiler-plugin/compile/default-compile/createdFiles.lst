@@ -1,0 +1,9 @@
+com/ssde/web/struts2/model/Repair.class
+com/ssde/web/struts2/owners/Listing.class
+com/ssde/web/struts2/parts/Listing.class
+com/ssde/web/struts2/model/Device.class
+com/ssde/web/struts2/model/User.class
+com/ssde/web/struts2/model/Owner.class
+com/ssde/web/struts2/users/Listing.class
+com/ssde/web/struts2/model/Part.class
+com/ssde/web/struts2/model/Rol.class
