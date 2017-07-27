@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<sitemesh>
- 	<mapping path="/*" decorator="/jsp/decorator.jsp"/>
- 	<!-- mapping path="/user" decorator="/jsp/views/user/userDecorator.jsp"/ -->
-</sitemesh>
