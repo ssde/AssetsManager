@@ -5,6 +5,7 @@ CREATE TABLE assetsmanager.devices (
 	qad_tag              varchar(100)    ,
 	service_tag          varchar(20)    ,
 	express              varchar(30)    ,
+	owner_fk			 bigint UNSIGNED,
 	CONSTRAINT pk_devices PRIMARY KEY ( id )
  ) engine=InnoDB;
 
@@ -22,3 +23,6 @@ ALTER TABLE assetsmanager.devices MODIFY service_tag varchar(20)     COMMENT 'se
 
 ALTER TABLE assetsmanager.devices MODIFY express varchar(30)     COMMENT 'Express service code, useful to get support from DELL is service tag is not present';
 
+CREATE INDEX idx_devices ON assetsmanager.devices ( owner_fk );
+
+ALTER TABLE assetsmanager.devices ADD CONSTRAINT fk_devices_owners FOREIGN KEY ( owner_fk ) REFERENCES assetsmanager.owners ( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;

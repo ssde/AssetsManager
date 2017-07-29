@@ -3,16 +3,16 @@ CREATE TABLE assetsmanager.parts (
 	brand                varchar(200)    ,
 	serial               varchar(200)    ,
 	kind                 varchar(200)    ,
-	repairfk             bigint UNSIGNED   ,
-	devicefk             bigint UNSIGNED   ,
+	repair_fk             bigint UNSIGNED   ,
+	device_fk             bigint UNSIGNED   ,
 	CONSTRAINT pk_parts PRIMARY KEY ( id )
  );
 
-CREATE INDEX idx_parts ON assetsmanager.parts ( devicefk );
+CREATE INDEX idx_parts ON assetsmanager.parts ( device_fk );
 
-CREATE INDEX idx_parts_0 ON assetsmanager.parts ( repairfk );
+CREATE INDEX idx_parts_0 ON assetsmanager.parts ( repair_fk );
 
-ALTER TABLE assetsmanager.parts ADD CONSTRAINT fk_parts_devices FOREIGN KEY ( devicefk ) REFERENCES assetsmanager.devices( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE assetsmanager.parts ADD CONSTRAINT fk_parts_devices FOREIGN KEY ( device_fk ) REFERENCES assetsmanager.devices( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-ALTER TABLE assetsmanager.parts ADD CONSTRAINT fk_parts_repairs FOREIGN KEY ( repairfk ) REFERENCES assetsmanager.repairs( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE assetsmanager.parts ADD CONSTRAINT fk_parts_repairs FOREIGN KEY ( repair_fk ) REFERENCES assetsmanager.repairs( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 

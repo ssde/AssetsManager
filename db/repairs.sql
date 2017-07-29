@@ -3,11 +3,11 @@ CREATE TABLE assetsmanager.repairs (
 	log                  varchar(5000)  NOT NULL  ,
 	log_date             date  NOT NULL  ,
 	techname             varchar(200)    ,
-	devicefk             bigint UNSIGNED   ,
+	device_fk             bigint UNSIGNED   ,
 	CONSTRAINT pk_repairs PRIMARY KEY ( id )
  ) engine=InnoDB;
 
-CREATE INDEX fk_repairs_devices ON assetsmanager.repairs ( devicefk );
+CREATE INDEX fk_repairs_devices ON assetsmanager.repairs ( device_fk );
 
 ALTER TABLE assetsmanager.repairs COMMENT 'Repair logs';
 
@@ -19,7 +19,7 @@ ALTER TABLE assetsmanager.repairs MODIFY log_date date  NOT NULL   COMMENT 'date
 
 ALTER TABLE assetsmanager.repairs MODIFY techname varchar(200)     COMMENT 'Tech name assigned for such repair';
 
-ALTER TABLE assetsmanager.repairs MODIFY devicefk bigint UNSIGNED    COMMENT 'Device foreign key';
+ALTER TABLE assetsmanager.repairs MODIFY device_fk bigint UNSIGNED    COMMENT 'Device foreign key';
 
-ALTER TABLE assetsmanager.repairs ADD CONSTRAINT fk_repairs_devices FOREIGN KEY ( devicefk ) REFERENCES assetsmanager.devices( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE assetsmanager.repairs ADD CONSTRAINT fk_repairs_devices FOREIGN KEY ( device_fk ) REFERENCES assetsmanager.devices( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
