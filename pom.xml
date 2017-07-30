@@ -19,6 +19,7 @@
 		<sitemesh.ver>3.0.1</sitemesh.ver>
   		<spring.ver>4.1.4.RELEASE</spring.ver>
 		<hibernate.ver>4.3.8.Final</hibernate.ver>
+        <joda-time.ver>2.3</joda-time.ver>
   	</properties>
   	
   	<dependencies>
@@ -65,22 +66,30 @@
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>${spring.ver}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-context</artifactId>
 		    <version>${spring.ver}</version>
 		</dependency>
-		 
 		<dependency>
 		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-context-support</artifactId>
+		    <artifactId>spring-tx</artifactId>
 		    <version>${spring.ver}</version>
 		</dependency>
-		 
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-orm</artifactId>
 		    <version>${spring.ver}</version>
 		    <type>jar</type>
 		    <scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>4.1.6.RELEASE</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
@@ -123,28 +132,55 @@
 		    <artifactId>commons-dbcp2</artifactId>
 		    <version>2.0</version>
 		</dependency>
+        <!-- Joda-Time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.ver}</version>
+        </dependency>
+ 
+        <!-- To map JodaTime with database type -->
+        <dependency>
+            <groupId>org.jadira.usertype</groupId>
+            <artifactId>usertype.core</artifactId>
+            <version>3.0.0.CR1</version>
+        </dependency>
+		<dependency>
+		    <groupId>org.apache.tomcat</groupId>
+		    <artifactId>tomcat-dbcp</artifactId>
+		    <version>7.0.55</version>
+		</dependency>
   	</dependencies>
   	
   	<build>
     	<finalName>ssde_assetsmanager</finalName>
     	<plugins>
 	    	<plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-war-plugin</artifactId>
-	        <version>${mvn.plugin}</version>
-	        <configuration>
-	          	<archive>
-	            	<manifest>
-	              		<addClasspath>true</addClasspath>
-	            	</manifest>
-	          	</archive>
-<!--  	
-	To build the war file to be deployed to a tomcat, WebSphere, Glasfish, etc.
-	run from the command line the command: 'mvn package' it will build in the 
-	target folder a file named ${finalName}.war
--->
-	        </configuration>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-war-plugin</artifactId>
+		        <version>${mvn.plugin}</version>
+		        <configuration>
+		          	<archive>
+		            	<manifest>
+		              		<addClasspath>true</addClasspath>
+		            	</manifest>
+		          	</archive>
+					<!--  	
+						To build the war file to be deployed to a tomcat, WebSphere, Glasfish, etc.
+						run from the command line the command: 'mvn package' it will build in the 
+						target folder a file named ${finalName}.war
+					-->
+		        </configuration>
 	      	</plugin>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-compiler-plugin</artifactId>
+		        <version>3.6.1</version>
+	            <configuration>
+	                <source>1.8</source>
+	                <target>1.8</target>
+	            </configuration>
+	        </plugin>
     	</plugins>
   	</build>
   	
