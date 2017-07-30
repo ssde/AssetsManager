@@ -5,11 +5,11 @@
 <hibernate-configuration>
 	<session-factory>
 		<!-- Database connection settings -->
-		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://127.0.0.1/assetsmanager?serverTimezone=America/Mexico_City</property>
-		<property name="connection.username">root</property>
-		<property name="connection.password">Liferay12</property>
-		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="jdbc.driverClassName">com.mysql.jdbc.Driver</property>
+		<property name="jdbc.url">jdbc:mysql://127.0.0.1/assetsmanager?serverTimezone=America/Mexico_City</property>
+		<property name="jdbc.username">root</property>
+		<property name="jdbc.password">Liferay12</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
 		<!--
 			Enable c3p0 connection pooling, because hibernate pooling is not
@@ -23,7 +23,8 @@
 		<property name="c3p0.idle_test_period">30</property>
 		-->
 		<!-- Echo all executed SQL to stdout for debugging -->
-		<property name="show_sql">true</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">create-drop</property>
 
 		<!-- All the entity classes for hibernate to check for annotations here-->
 		<mapping class="com.ssde.web.struts2.model.Device" />
