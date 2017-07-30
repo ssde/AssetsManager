@@ -1,9 +1,10 @@
 package com.ssde.web.struts2.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -28,14 +29,14 @@ public class Part {
 	public String getKind() { return kind; }
 	public void setKind(String kind) { this.kind = kind; }
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	//@Column(name="repair_fk")
-	Repair service;
-	public Repair getService() { return service; }
-	public void setService(Repair service) { this.service = service; }
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="repair_fk")
+	Repair repair;
+	public Repair getRepair() { return repair; }
+	public void setRepair(Repair repair) { this.repair = repair; }
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	//@Column(name="device_fk")
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="device_fk")
 	Device device;
 	public Device getDevice() { return device; }
 	public void setDevice(Device device) { this.device = device; }
@@ -43,11 +44,11 @@ public class Part {
 	public Part() {
 	}
 
-	public Part(Long id, String brand, String serial, String kind, Repair service) {
+	public Part(Long id, String brand, String serial, String kind, Repair repair) {
 		this.id = id;
 		this.brand = brand;
 		this.serial = serial;
 		this.kind = kind;
-		this.service = service;
+		this.repair = repair;
 	}
 }

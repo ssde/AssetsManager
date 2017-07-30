@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -33,14 +34,15 @@ public class Repair {
 	public String getTechname() { return techname; }
 	public void setTechname(String techname) { this.techname = techname; }
 
+	@OneToMany(mappedBy = "repair")
+	@Column(name="repair_fk")
 	Set<Part> parts;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "repairs")
-	@Column(name="device_fk")
 	public Set<Part> getParts() { return parts; }
 	public void setParts(Set<Part> parts) { this.parts = parts; }
 	
-	Device device;
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="device_fk")
+	Device device;
 	public Device getDevice() { return device; }
 	public void setDevice(Device device) { this.device = device; }
 	

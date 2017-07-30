@@ -34,31 +34,31 @@ public class Device {
 	public String getExpress() { return express; }
 	public void setExpress(String express) { this.express = express; }
 	
-	@ManyToMany
-	@JoinTable(
-		name="devices_owners",
-		joinColumns=@JoinColumn(name="device_fk"),
-		inverseJoinColumns=@JoinColumn(name="owner_fk")
-	)
+//	@ManyToMany
+//	@JoinTable(
+//		name="devices_owners",
+//		joinColumns=@JoinColumn(name="device_fk"),
+//		inverseJoinColumns=@JoinColumn(name="owner_fk")
+//	)
 	
-	Set<Owner> owners;
-	public Set<Owner> getOwners() { return owners; }
-	public void setOwners(Set<Owner> owners) { this.owners = owners; }
-	
+	@ManyToOne(cascade = CascadeType.ALL)
+	Owner owner;
+	public Owner getOwner() { return owner; }
+	public void setOwner(Owner owner) { this.owner = owner; }
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "device")
-	@Column(name="part_fk")
+//	@Column(name="device_fk")
 	Set<Part> parts = new HashSet<Part>();
 	public Set<Part> getParts() { return parts; }
 	public void setParts(Set<Part> parts) { this.parts = parts; }
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "device")
-	@Column(name="device_fk")
 	Set<Repair> repairs = new HashSet<Repair>();
 	public Set<Repair> getRepairs() { return repairs; }
 	public void setRepairs(Set<Repair> repairs) { this.repairs = repairs; }
 
 	public Device(Long id, String brand, String model, String qad_tag, String service_tag, String express,
-			Set<Owner> owners, Set<Part> parts, Set<Repair> repairs) {
+			Owner owner, Set<Part> parts, Set<Repair> repairs) {
 		super();
 		this.id = id;
 		this.brand = brand;
@@ -66,7 +66,7 @@ public class Device {
 		this.qad_tag = qad_tag;
 		this.service_tag = service_tag;
 		this.express = express;
-		this.owners = owners;
+		this.owner = owner;
 		this.parts = parts;
 		this.repairs = repairs;
 	}

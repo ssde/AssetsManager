@@ -20,12 +20,13 @@ public class Owner {
 	public String getArea() { return area; }
 	public void setArea(String area) { this.area = area; }
 	
-	@ManyToMany
-	@JoinTable(
-		name="devices_owners",
-		joinColumns=@JoinColumn(name="owner_fk"),
-		inverseJoinColumns=@JoinColumn(name="device_fk")
-	)
+//	@ManyToMany
+//	@JoinTable(
+//		name="devices_owners",
+//		joinColumns=@JoinColumn(name="owner_fk"),
+//		inverseJoinColumns=@JoinColumn(name="device_fk")
+//	)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
 	Set<Device> devices;
 	public Set<Device> getDevices() { return devices; }
 	public void setDevices(Set<Device> devices) { this.devices = devices; }
