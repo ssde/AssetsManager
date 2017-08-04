@@ -45,7 +45,6 @@ public class Part {
 	}
 
 	public Part(Long id, String brand, String serial, String kind, Repair repair) {
-		this.id = id;
 		this.brand = brand;
 		this.serial = serial;
 		this.kind = kind;

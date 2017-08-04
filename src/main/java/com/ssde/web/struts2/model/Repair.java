@@ -45,12 +45,12 @@ public class Repair {
 	public Device getDevice() { return device; }
 	public void setDevice(Device device) { this.device = device; }
 	
-	public Repair(Long id, String log, Date lod_date, String techname, Set<Part> parts) {
-		super();
-		this.id = id;
+	public Repair(String log, Date lod_date, String techname, Set<Part> parts) {
 		this.log = log;
 		this.lod_date = lod_date;
 		this.techname = techname;
 		this.parts = parts;
 	}
+	
+	public Repair(){}
 }

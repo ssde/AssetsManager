@@ -32,11 +32,10 @@ public class Owner {
 	public void setDevices(Set<Device> devices) { this.devices = devices; }
 
 	public Owner(Long id, String name, String area, Set<Device> devices) {
-		super();
-		this.id = id;
 		this.name = name;
 		this.area = area;
 		this.devices = devices;
 	}
 
+	public Owner(){}
 }

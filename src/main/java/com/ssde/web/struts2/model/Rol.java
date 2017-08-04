@@ -37,10 +37,10 @@ public class Rol {
 	public void setUsers(Set<User> users) { this.users = users; }
 	
 	public Rol(Long id, String name, String detail, Set<User> users) {
-		super();
-		this.id = id;
 		this.name = name;
 		this.detail = detail;
 		this.users = users;
 	}
+	
+	public Rol(){}
 }

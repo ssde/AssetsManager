@@ -41,11 +41,10 @@ public class User {
 	public void setRoles(Set<Rol> roles) { this.roles = roles; }
 	
 	public User(Long id, String name, String password, String screenname) {
-		super();
-		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.screenname = screenname;
 	}
 
+	public User(){}
 }
