@@ -70,4 +70,6 @@ public class Device {
 		this.parts = parts;
 		this.repairs = repairs;
 	}
+	
+	public Device(){} 
 }
