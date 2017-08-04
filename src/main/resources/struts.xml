@@ -16,28 +16,28 @@
     </package>
     
     <package name="devices" namespace="/devices" extends="struts-default">
-    	<action name="*" class="com.ssde.web.struts2.devices.{1}">
+    	<action name="*" class="com.ssde.web.struts2.controllers.devices.{1}">
     		<result>/jsp/views/devices/{1}.jsp</result>
     		<result name="redirect" type="redirect">${redirectUrl}</result>
     	</action>
     </package>
     
     <package name="owners" namespace="/owners" extends="struts-default">
-    	<action name="*" class="com.ssde.web.struts2.owners.{1}">
+    	<action name="*" class="com.ssde.web.struts2.controllers.owners.{1}">
     		<result>/jsp/views/owners/{1}.jsp</result>
     		<result name="redirect" type="redirect">${redirectUrl}</result>
     	</action>
     </package>
     
     <package name="parts" namespace="/parts" extends="struts-default">
-    	<action name="*" class="com.ssde.web.struts2.parts.{1}">
+    	<action name="*" class="com.ssde.web.struts2.controllers.parts.{1}">
     		<result>/jsp/views/parts/{1}.jsp</result>
     		<result name="redirect" type="redirect">${redirectUrl}</result>
     	</action>
     </package>
     
     <package name="users" namespace="/users" extends="struts-default">
-    	<action name="*" class="com.ssde.web.struts2.users.{1}">
+    	<action name="*" class="com.ssde.web.struts2.admin.controllers.users.{1}">
     		<result>/jsp/views/users/{1}.jsp</result>
     		<result name="redirect" type="redirect">${redirectUrl}</result>
     	</action>
