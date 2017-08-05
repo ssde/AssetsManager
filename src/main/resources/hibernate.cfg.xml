@@ -4,28 +4,28 @@
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<!-- Database connection settings -->
+		<!-- Database connection settings >
 		<property name="jdbc.driverClassName">com.mysql.jdbc.Driver</property>
 		<property name="jdbc.url">jdbc:mysql://127.0.0.1/assetsmanager?serverTimezone=America/Mexico_City</property>
 		<property name="jdbc.username">root</property>
 		<property name="jdbc.password">Liferay12</property>
-		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property -->
 
 		<!--
 			Enable c3p0 connection pooling, because hibernate pooling is not
 			prod-ready. Apparently connection.provider_class is needed in
 			hibernate 3+
 		-->
-		<!--  
+		<!--
 		<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
 		<property name="c3p0.max_size">100</property>
 		<property name="c3p0.min_size">1</property>
 		<property name="c3p0.idle_test_period">30</property>
-		-->
-		<!-- Echo all executed SQL to stdout for debugging -->
+  		-->
+		<!-- Echo all executed SQL to stdout for debugging 
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">create-drop</property>
-
+		-->
 		<!-- All the entity classes for hibernate to check for annotations here-->
 		<mapping class="com.ssde.web.struts2.model.Device" />
 		<mapping class="com.ssde.web.struts2.model.Owner" />

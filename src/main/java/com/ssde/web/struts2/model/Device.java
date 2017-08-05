@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name="devices")
 public class Device {
@@ -47,7 +46,6 @@ public class Device {
 	public void setOwner(Owner owner) { this.owner = owner; }
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "device")
-//	@Column(name="device_fk")
 	Set<Part> parts = new HashSet<Part>();
 	public Set<Part> getParts() { return parts; }
 	public void setParts(Set<Part> parts) { this.parts = parts; }
@@ -57,10 +55,8 @@ public class Device {
 	public Set<Repair> getRepairs() { return repairs; }
 	public void setRepairs(Set<Repair> repairs) { this.repairs = repairs; }
 
-	public Device(Long id, String brand, String model, String qad_tag, String service_tag, String express,
+	public Device(String brand, String model, String qad_tag, String service_tag, String express,
 			Owner owner, Set<Part> parts, Set<Repair> repairs) {
-		super();
-		this.id = id;
 		this.brand = brand;
 		this.model = model;
 		this.qad_tag = qad_tag;
