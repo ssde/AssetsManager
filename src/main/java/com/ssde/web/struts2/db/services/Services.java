@@ -1,6 +1,7 @@
 package com.ssde.web.struts2.db.services;
 
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -145,19 +146,69 @@ public class Services {
 		return session().createQuery("from users").list();
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Device> getAllDevicesByOwnerId(long id) {
-		return session().createQuery("from devices where owner_fk="+id).list();
+	public Set<Device> getAllDevicesByOwnerId(long id) {
+		return getOwnerById(id).getDevices();
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Part> getAllPartsByDeviceId(long id) {
-		return session().createQuery("from parts where device_fk="+id).list();
+	public Set<Part> getAllPartsByDeviceId(long id) {
+		return getDeviceById(id).getParts();
+	}
+	
+	public Set<Repair> getAllRepairsByDeviceId(long id) {
+		return getDeviceById(id).getRepairs();
+	}
+	
+	public Set<Part> getAllPartsByRepairId(long id) {
+		return getRepairById(id).getParts();
+	}
+	
+	public Set<Rol> getAllRolesByUserId(long id) {
+		return getUserById(id).getRoles();
+	}
+	/**
+	 * Add references to objects 
+	 */
+	public void addDeviceToOwner(long ownerId, long deviceId) {
+		getOwnerById(ownerId).getDevices().add(getDeviceById(deviceId));
+	}
+	
+	public void addRepairToDevice(long deviceId, long repairId) {
+		getDeviceById(deviceId).getRepairs().add(getRepairById(repairId));
+	}
+	
+	public void addPartToDevice(long deviceId, long partId) {
+		getDeviceById(deviceId).getParts().add(getPartById(partId));
+	}
+	
+	public void addPartToRepair(long repairId, long partId) {
+		getRepairById(repairId).getParts().add(getPartById(partId));
+	}
+	
+	public void addRolToUser(long userId, long rolId) {
+		getUserById(userId).getRoles().add(getRolById(rolId));
 	}
 	
 	/**
 	 * Remove references from objects
 	 */
+	public void removeDeviceFromOwner(long ownerId, long deviceId) {
+		getOwnerById(ownerId).getDevices().remove(getDeviceById(deviceId));
+	}
 	
+	public void removeRepairFromDevice(long deviceId, long repairId) {
+		getDeviceById(deviceId).getRepairs().remove(getRepairById(repairId));
+	}
+	
+	public void removePartFromDevice(long deviceId, long partId) {
+		getDeviceById(deviceId).getParts().remove(getPartById(partId));
+	}
+	
+	public void removePartFromRepair(long repairId, long partId) {
+		getRepairById(repairId).getParts().remove(getPartById(partId));
+	}
+	
+	public void removeRolFromUser(long userId, long rolId) {
+		getUserById(userId).getRoles().remove(getRolById(rolId));
+	}
 	
 }

@@ -14,6 +14,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Assets Manager - <sitemesh:write property='title' /></title>
 	<link rel="stylesheet" type="text/css" href="${contextPath}/css/decorator.css" />
+	<!-- link rel="stylesheet" type="text-css" href="" / -->
+	<link rel="stylesheet" type="text-css" href="${contextPath}/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text-css" href="${contextPath}/css/font-awesome.min.css" />
 	<sitemesh:write property='head' />
 </head>
 <body>
