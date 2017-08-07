@@ -5,6 +5,11 @@ import com.ssde.web.struts2.model.Device;
 
 public class New extends BaseAction{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7251182788665111237L;
+	
 	public String execute() {
 		if(brand!=null && !brand.equals("") && model!=null && !model.equals("")){
 			Device d = new Device();
@@ -14,8 +19,9 @@ public class New extends BaseAction{
 			d.setService_tag(service_tag);
 			d.setQad_tag(qad_tag);
 			services.createDevice(d);
+			return redirect("Listing.action");
 		}
-		return "success";
+		return SUCCESS;
 	}
 	
 	String brand;
