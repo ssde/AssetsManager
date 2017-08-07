@@ -9,13 +9,16 @@ import com.ssde.web.struts2.db.actions.BaseAction;
 import com.ssde.web.struts2.model.Device;
 
 public class Listing extends BaseAction{
-//	Logger logger = LogManager.getLogger(this.getClass());
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8936746895670774502L;
 	Logger log = LogManager.getLogger("Controller_Devices_Listings");
 	
 	public String execute(){
 		log.info("Executing from the devices listing action");
 		devices = services.getAllDevices();
-		return "success";
+		return SUCCESS;
 	}
 	
 	List<Device> devices;
