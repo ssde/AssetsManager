@@ -128,22 +128,27 @@ public class Services {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Device> getAllDevices() {
-		return session().createQuery("from devices").list();
+		return session().createQuery("from Device").list();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Owner> getAllOwners() {
-		return session().createQuery("from owners").list();
+		return session().createQuery("from Owner").list();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Rol> getAllRoles() {
-		return session().createQuery("from roles").list();
+		return session().createQuery("from Rol").list();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
-		return session().createQuery("from users").list();
+		return session().createQuery("from User").list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Repair> getAllRepairs() {
+		return session().createQuery("from Repair").list();
 	}
 	
 	public Set<Device> getAllDevicesByOwnerId(long id) {
