@@ -41,6 +41,7 @@ public class Device {
 //	)
 	
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="owner_fk")
 	Owner owner;
 	public Owner getOwner() { return owner; }
 	public void setOwner(Owner owner) { this.owner = owner; }
