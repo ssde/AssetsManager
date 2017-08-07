@@ -36,7 +36,7 @@
     	</action>
     </package>
     
-    <package name="users" namespace="/users" extends="struts-default">
+    <package name="users" namespace="/admin" extends="struts-default">
     	<action name="*" class="com.ssde.web.struts2.admin.controllers.users.{1}">
     		<result>/jsp/views/users/{1}.jsp</result>
     		<result name="redirect" type="redirect">${redirectUrl}</result>
