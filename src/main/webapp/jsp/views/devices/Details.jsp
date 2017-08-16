@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Device details - <s:property name="model"/></title>
+		<title>Device details - <s:property value="qad_tag"/></title>
 	</head>
 	<body>
 		<table class="table table-hover">
@@ -16,9 +16,12 @@
 				<tr>
 					<th>Brand</th>
 					<th>Model</th>
+					<th>Series</th>
 					<th>QAD Tag</th>
 					<th>Service Tag/Serial</th>
 					<th>Express Service Code</th>
+					<th>Purchase Date</th>
+					<th>Warranty End Date</th>
 					<th>Owner</th>
 				</tr>
 			</thead>
@@ -26,15 +29,18 @@
 				<tr>
 					<td><s:property value="brand"/></td>
 					<td><s:property value="model"/></td>
+					<td><s:property value="series"/></td>
 					<td><s:property value="qad_tag"/></td>
 					<td><s:property value="service_tag"/></td>
 					<td><s:property value="express"/></td>
+					<td><s:property value="purchase"/></td>
+					<td><s:property value="warranty_end"/></td>
 					<td><s:property value="owner.name"/></td>
 				</tr>
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="6">
+					<td colspan="9">
 						<a href="${contextPath}/devices/Edit.action" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
 					</td>
 				</tr>

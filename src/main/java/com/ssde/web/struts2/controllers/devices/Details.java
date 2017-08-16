@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.joda.time.DateTime;
 
 import com.ssde.web.struts2.db.actions.BaseAction;
 import com.ssde.web.struts2.model.Device;
@@ -22,9 +23,13 @@ public class Details extends BaseAction {
 		device = services.getDeviceById(id);
 		brand = device.getBrand();
 		model = device.getModel();
+		series = device.getSeries();
 		qad_tag = device.getQad_tag();
 		service_tag = device.getService_tag();
 		express = device.getExpress();
+		purchase = device.getPurchase();
+		warranty_end = device.getWarranty_end();
+		comments = device.getComments();
 		owner = device.getOwner();
 		repairs = services.getAllRepairsByDeviceId(id);
 		parts = services.getAllPartsByDeviceId(id);
@@ -43,6 +48,10 @@ public class Details extends BaseAction {
 	public String getModel() { return model; }
 	public void setModel(String model) { this.model = model; }
 
+	String series;
+	public String getSeries() { return series; }
+	public void setSeries(String series) { this.series = series; }
+
 	String qad_tag;
 	public String getQad_tag() { return qad_tag; }
 	public void setQad_tag(String qad_tag) { this.qad_tag = qad_tag; }
@@ -58,6 +67,18 @@ public class Details extends BaseAction {
 	Device device;
 	public Device getDevice() { return device; }
 	
+	DateTime purchase;
+	public DateTime getPurchase() { return purchase; }
+	public void setPurchase(DateTime purchase) { this.purchase = purchase; }
+	
+	DateTime warranty_end;
+	public DateTime getWarranty_end() { return warranty_end; }
+	public void setWarranty_end(DateTime warranty_end) { this.warranty_end = warranty_end; }
+	
+	String comments;
+	public String getComments() { return comments; }
+	public void setComments(String comments) { this.comments = comments; }
+
 	Owner owner;
 	public Owner getOwner() { return owner; }
 	public void setOwner(Owner tmp) { owner = tmp; }
