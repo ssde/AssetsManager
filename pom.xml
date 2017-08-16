@@ -17,7 +17,7 @@
   		<logging.ver>2.8.2</logging.ver>
   		<struts2.ver>2.5.12</struts2.ver>
 		<sitemesh.ver>3.0.1</sitemesh.ver>
-  		<spring.ver>4.1.4.RELEASE</spring.ver>
+  		<spring.ver>4.1.6.RELEASE</spring.ver>
 		<hibernate.ver>4.3.8.Final</hibernate.ver>
         <joda-time.ver>2.3</joda-time.ver>
   	</properties>
@@ -53,17 +53,20 @@
 		    <artifactId>struts2-spring-plugin</artifactId>
 		    <version>${struts2.ver}</version>
 		</dependency>
+		<!--  
 		<dependency>
 		    <groupId>org.apache.logging.log4j</groupId>
 		    <artifactId>log4j-core</artifactId>
 		    <version>${logging.ver}</version>
 		</dependency>
+		-->
 		<dependency>
 		    <groupId>org.apache.logging.log4j</groupId>
 		    <artifactId>log4j-api</artifactId>
 		    <version>${logging.ver}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+		<!-- 
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-core</artifactId>
@@ -76,6 +79,12 @@
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>${spring.ver}</version>
+		</dependency>
+		-->
+		<dependency>
+		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-tx</artifactId>
 		    <version>${spring.ver}</version>
 		</dependency>
@@ -86,16 +95,17 @@
 		    <type>jar</type>
 		    <scope>compile</scope>
 		</dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-web</artifactId>
-		    <version>${spring.ver}</version>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-core</artifactId>
 		    <version>${hibernate.ver}</version>
+		    <exclusions>
+		        <exclusion>
+		            <groupId>org.javassist</groupId>
+		            <artifactId>javassist</artifactId>
+		        </exclusion>
+		    </exclusions>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
@@ -109,12 +119,13 @@
 		    <artifactId>commons-collections</artifactId>
 		    <version>3.2.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/javassist/javassist -->
+		<!-- https://mvnrepository.com/artifact/javassist/javassist 
 		<dependency>
-		    <groupId>javassist</groupId>
+		    <groupId>org.javassist</groupId>
 		    <artifactId>javassist</artifactId>
-		    <version>3.12.1.GA</version>
+		    <version>3.18.1-GA</version>
 		</dependency>
+		-->
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>javax.servlet-api</artifactId>
@@ -157,12 +168,13 @@
 		    <version>1.7.25</version>
 		    <scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.jgeppert.struts2.bootstrap/struts2-bootstrap-plugin  -->
+		<!-- https://mvnrepository.com/artifact/com.jgeppert.struts2.bootstrap/struts2-bootstrap-plugin 
 		<dependency>
 		    <groupId>com.jgeppert.struts2.bootstrap</groupId>
 		    <artifactId>struts2-bootstrap-plugin</artifactId>
 		    <version>2.5.1</version>
 		</dependency>
+		-->
   	</dependencies>
   	
   	<build>
