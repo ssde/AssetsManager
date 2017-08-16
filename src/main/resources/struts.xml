@@ -29,6 +29,13 @@
     	</action>
     </package>
     
+    <package name="repairs" namespace="/repairs" extends="struts-default">
+    	<action name="*" class="com.ssde.web.struts2.controllers.repairs.{1}">
+    		<result>/jsp/views/repairs/{1}.jsp</result>
+    		<result name="redirect" type="redirect">${redirectUrl}</result>
+    	</action>
+    </package>
+    
     <package name="parts" namespace="/parts" extends="struts-default">
     	<action name="*" class="com.ssde.web.struts2.controllers.parts.{1}">
     		<result>/jsp/views/parts/{1}.jsp</result>
