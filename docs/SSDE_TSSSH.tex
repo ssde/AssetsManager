@@ -1,4 +1,5 @@
-\documentclass[12pt]{article}
+\documentclass[12pt,a4paper]{article}
+\usepackage[a4paper,margin=0.75in]{geometry}
 \usepackage{latexsym}
 \usepackage[activeacute,spanish]{babel}
 \usepackage{graphicx}
@@ -16,11 +17,9 @@
 \newpage
 
     \section{Introducci\'on}
-		Este tutorial est\'a basado en en tutorial de Chris Hulbert.
-		\\
-		En este tutorial usaremos maven como el proveedor de scripts para inicializaci\'on y compilaci\'on as\'i como tambi\'en administrar las librerias y las versiones de las mismas.
-
-		\subsection{Requerimientos}
+		Este tutorial est\'a basado en en tutorial de Chris Hulbert.\\ \par
+		En este tutorial usaremos maven como el proveedor de scripts para inicializaci\'on y compilaci\'on as\'i como tambi\'en administrar las librerias y las versiones de las mismas.\\
+		\subsection{Requisitos}
 		Para este tutorial utilizaremos:
 		\begin{itemize}
 		\item Eclipse (Puede usarse cualquier otro IDE o editor de texto)
@@ -33,16 +32,15 @@
 		\subsection{Creando nuestro proyecto}
 		Hay varias formas de crear nuestro proyecto, una de ellas es por medio de la consola (l\'inea 
 		de comandos, terminal, etc.) otra es usando alguno de los IDEs disponibles, Eclipse, IntelliJ,
-		 etc.
-		\\Enseguida mostraremos como hacerlo:
+		etc.\\ \par
+		Enseguida mostraremos como hacerlo:
 
 		\subsubsection{Terminal}
 		
 		Abrimos nuestra terminal, previamente hemos instalado Maven y JDK, nos posicionamos en el folder
 		en el que nuestro proyecto va a residir y tecleamos:\\
 		\linebreak
-		\texttt{mvn archetype:generate -DgroupId=com.ssde.tutorial -DartifactId=test -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false}\\
-		\linebreak
+		\texttt{mvn archetype:generate -DgroupId=com.ssde.tutorial -DartifactId=test \\-DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false}\\
 		\textbf{Que significan todos esos parametros?}
 
 		\begin{description}
@@ -52,32 +50,31 @@
 		\item[-DarchetypeArtifactId=maven-archetype-webapp] Es el nombre del arquetipo a utilizar por maven para crear el proyecto
 		\item[-DinteractiveMode=false] Le dice a mvn que no necesita interacci\'on del usuario.
 		\end{description}
+
 		\subsubsection{Eclipse}
-		
-		Abrimos Eclipse, vamos al men\'u "Nuevo...", seleccionamos "Proyecto..." y buscamos la categor\'ia Maven y seleccionamos Proyecto Maven como se ve en la figura \ref{01_nuevo_proyecto}
+		Abrimos Eclipse, vamos al men\'u "Nuevo...", seleccionamos "Proyecto..." y buscamos la categor\'ia Maven y seleccionamos Proyecto Maven como se ve en la figura \ref{01_nuevo_proyecto}\\ \par
         \begin{figure}[h]
             \centering
             \includegraphics[scale=0.4]{01_nuevo_proyecto}
             \caption{Proyecto Maven}
             \label{01_nuevo_proyecto}
         \end{figure}
-		\\
-		En la siguiente ventana como se muestra en la figura \ref{02_nuevo_proyecto}, asegurate de NO seleccionar ''Crear proyecto simple (saltar selecci\'on de arquetipo)", presionamos siguiente...
+        
+		En la siguiente ventana como se muestra en la figura \ref{02_nuevo_proyecto}, asegurate de NO seleccionar ''Crear proyecto simple (saltar selecci\'on de arquetipo)", presionamos siguiente...\\ \par
         \begin{figure}[h]
             \centering
             \includegraphics[scale=0.4]{02_nuevo_proyecto}
             \caption{Seleci\'on del folder donde guardar el proyecto}
             \label{02_nuevo_proyecto}
         \end{figure}
-        \\
-        En la nueva ventana, figura \ref{03_nuevo_proyecto}, veremos la lista de los arquetipos disponibles, regularmente el que necesitamos \texttt{maven-archetype-webapp}, una vez seleccionada presionamos siguente...
+        En la nueva ventana, figura \ref{03_nuevo_proyecto}, veremos la lista de los arquetipos disponibles, regularmente el que necesitamos \texttt{maven-archetype-webapp}, una vez seleccionada presionamos siguente...\\ \par
          \begin{figure}[h]
             \centering
             \includegraphics[scale=0.4]{03_nuevo_proyecto}
             \caption{Selecci\'on del arquetipo}
             \label{03_nuevo_proyecto}
         \end{figure}
-        \\
+        \par
         En \'esta \'ultima ventana, figura \ref{04_nuevo_proyecto}, podemos definir el nombre de nuestra aplicaci\'on y el nombre del paquete al que pertenecer\'a, una vez elegido esto podemos terminal el Wizard y tendremos nuestro esqueleto de aplicaci\'on listo para empezar a trabajar.
         \begin{figure}[h]
             \centering
@@ -88,10 +85,23 @@
         \newpage
         
 		\subsection{Instalando Tomcat}
-		Descargamos de el sitio de apache https://tomcat.apache.org/download-70.cgi, una vez descargado el arvhivo zip, lo colocamos en un folder para de ah\'i iniciar el servidor.\\
-		Vamos al folder conf dentro de tomcat y modificamos el archivo tomcat-users.xml para agregar los roles admin, admin-gui y manager-gui, agregamos un usuario asignamos una contrasena y le asignamos dichos roles. Eso es todo, tomcat est\'a listo para ser utilizado.
+		Descargamos de el sitio de apache https://tomcat.apache.org/download-70.cgi, una vez descargado el arvhivo zip, lo colocamos en un folder para de ah\'i iniciar el servidor.\\ \par
+		Vamos al folder conf dentro de tomcat y modificamos el archivo tomcat-users.xml para agregar los roles admin, admin-gui y manager-gui, agregamos un usuario asignamos una contrasena y le asignamos dichos roles. Eso es todo, tomcat est\'a listo para ser utilizado.\\ \par
 		\newpage
-
+		\section{Proyecto}
+		Ya tenemos nuestro proyecto eclipse vac\'io y listo para darle consistencia y forma. La aplicaci\'on que usaremos para este tutorial es un administrador de activos.\\ \par
+		Qu\'e es? Para qu\'e es? C\'omo se va a hacer? Lo detallaremos m\'as adelante\\ \par
+		\subsection{Requerimientos}
+		Hace tiempo, cuando empec\'e a trabajar en QAD M\'exico, entr\'e como soporte t\'ecnico y v\'i que me hubiera sido muy \'util contar con una aplicaci\'on que me permitiera gestionar los equipos as\'i como llevar un registro de qui\'en ten\'ia los equipos, que servicios se les hab\'ia hecho, que piezas se hab\'ian cambiado en dichos servicios, que equipos ya no tienen garant\'ias, cuales est\'an proximos a vencer sus garant\'ias, etc.
+        \subsubsection{El qu\'e}
+        Se requiere un sistema de administraci\'on de activos (Assets Manager) que ayude al manejo y control de los equipos existentes en el inventario, que persona lo tiene asignado o bajo su cuidado, que reparaciones se le han hecho, cu\'ando vence la garant\'ia, cuando es elegible para reemplazo as\'i como tambi\'en algunos datos b\'asicos acerca de la persona que lo tiene en resguardo.
+		\newpage
+		\subsubsection{El porqu\'e}
+		Esencialmente el sistema funcionar\'a como un compendio de los equipos que se tienen en inventario, que persona los tiene, a que departamento pertenece, en fin para hacer la gesti\'on de los mismos m\'as sencilla.\\ \par
+		\newpage
+		\subsubsection{El c\'omo}
+		Iniciaremos definiendo nuestaos 'entidades', es decir, los objetos que ser\'an los encargados de contener la informaci\'on que va y viene desde la base de datos\\ \par
+        \newpage
     \section{Sitemesh}
 		Utilizaremos Sitemesh como el proveedor de tema para nuestra aplicaci\'on, primero necesitamos agregar la dependencia a nuestro archivo pom.xml, para este tutorial utilizaremos la versi\'on m\'as reciente de sitemesh 3.0.1.\\
 		\subsection{pom.xml}
@@ -110,7 +120,6 @@
             \caption{Agregando la dependencia de Sitemesh}
             \label{06_pom_xml}
         \end{figure}
-        \newpage
         
         \subsection{web.xml}
         Es tiempo de agregar Sitemesh a nuestro archivo web.xml, como se describe en la figura \ref{07_web_xml}, este bloque debe estar al fondo de nuestro archivo web.xml
@@ -120,7 +129,6 @@
             \caption{Agregando el filtro para Sitemesh}
             \label{07_web_xml}
         \end{figure}
-        \newpage
         
         \subsection{sitemesh3.xml}
         Para designar nuestra plantilla para el tema a utilizar necesitamos agregar el archivo sitemesh3.xml en el mismo folder que nuestro archivo web.xml est\'a situado, el contenido de dicho archivo se muestra en la figura \ref{08_sitemesh3_xml}.
@@ -130,8 +138,7 @@
             \caption{Agregando el archivo decorador de Sitemesh y su localizaci\'on}
             \label{08_sitemesh3_xml}
         \end{figure}
-        \newpage
-        
+         
         \subsection{decorator.jsp}
         La figura \ref{09_decorator_jsp} nos muestra la configuraci\'on m\'inima para nuestro archivo decorador, se puede utilizar tambi\'en el archivo main.jsp que Chris Hulbert usa en su tutorial junto con la hoja de estilos y las im\'agenes que utiliza
         \begin{figure}[h]
@@ -151,12 +158,25 @@
 		\newpage
 
     \section{Struts 2}
-    \newpage
-		\subsection{uno}
+		Utilizaremos Struts 2 como nuestro MVC, es uno de los frameworks m\'as populares, nace de la uni\'on de Struts y WebWork, es muy sencillo de agregar a nuestro proyecto, hay repositorios en maven para esto. Ahondaremos en el funcionamiento de Struts2 m\'as adelante.
+		\subsection{pom.xml}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.4]{11_pom_xml}
+            \caption{Dependencias maven para Struts2}
+            \label{11_pom_xml}
+        \end{figure}
+		Agregamos la version que utilizaremos, al momento de este tutorial es la 2.5.12 y agregamos las dependencias en el bloque de dependencias como se muestra en la figura \ref{11_pom_xml}
+		\subsection{web.xml}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.4]{12_web_xml}
+            \caption{Filtros de Struts2 para nuestra aplicaci\'on}
+            \label{12_web_xml}
+        \end{figure}
+		Agregamos los filtros correspondientes para canalizar nuestros request por medio de Struts2 como en la figura \ref{12_web_xml}
 		\newpage
-		\subsection{dos}
-		\newpage
-		\subsection{tres}
+		\subsection{spring.xml}
 		\newpage
 
     \section{Logging}
