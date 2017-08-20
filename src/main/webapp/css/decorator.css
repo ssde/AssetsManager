@@ -1,12 +1,18 @@
+@font-face {
+    font-family: OpenSans;
+    src: url(../fonts/OpenSans-Regular.ttf);
+    font-weight:400;
+}
 html, body, p, h1, h2, h3 {
   margin:0;
   border:0;
   padding:0;
 }
 body {
-  background:black url(../img/bg.jpg) center top no-repeat;
+  background: black url(../img/bg.jpg) center top no-repeat;
   color:white;
-  font-family:trebuchet ms;
+  font-family: "OpenSans";
+  font-size: 12pt;
   width:800px;
   margin:auto;
 }
@@ -15,7 +21,7 @@ body {
   line-height:100px;
   padding-left:10px;
 }
-
+/*
 .tabs {
   height:30px;
   line-height:30px;
@@ -75,6 +81,4 @@ input {
 .body a:hover {
 	background:yellow;
 }
-form {
-	display:inline;
-}
+*/
