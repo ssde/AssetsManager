@@ -1,11 +1,10 @@
 package com.ssde.web.struts2.model;
 
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
-
-import org.joda.time.DateTime;
 
 @Entity
 @Table(name="devices")
@@ -39,13 +38,13 @@ public class Device {
 	public String getExpress() { return express; }
 	public void setExpress(String express) { this.express = express; }
 	
-	DateTime purchase;
-	public DateTime getPurchase() { return purchase; }
-	public void setPurchase(DateTime purchase) { this.purchase = purchase; }
+	Date purchase;
+	public Date getPurchase() { return purchase; }
+	public void setPurchase(Date purchase) { this.purchase = purchase; }
 	
-	DateTime warranty_end;
-	public DateTime getWarranty_end() { return warranty_end; }
-	public void setWarranty_end(DateTime warranty_end) { this.warranty_end = warranty_end; }
+	Date warranty_end;
+	public Date getWarranty_end() { return warranty_end; }
+	public void setWarranty_end(Date warranty_end) { this.warranty_end = warranty_end; }
 	
 	String comments;
 	public String getComments() { return comments; }
@@ -74,7 +73,7 @@ public class Device {
 	public Set<Repair> getRepairs() { return repairs; }
 	public void setRepairs(Set<Repair> repairs) { this.repairs = repairs; }
 
-	public Device(String brand, String model, String series, String qad_tag, String service_tag, String express, DateTime purchase, DateTime warranty_end, String comments,
+	public Device(String brand, String model, String series, String qad_tag, String service_tag, String express, Date purchase, Date warranty_end, String comments,
 			Owner owner, Set<Part> parts, Set<Repair> repairs) {
 		this.brand = brand;
 		this.model = model;

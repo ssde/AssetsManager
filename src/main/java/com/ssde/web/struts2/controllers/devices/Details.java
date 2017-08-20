@@ -1,10 +1,10 @@
 package com.ssde.web.struts2.controllers.devices;
 
+import java.sql.Date;
 import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.joda.time.DateTime;
 
 import com.ssde.web.struts2.db.actions.BaseAction;
 import com.ssde.web.struts2.model.Device;
@@ -67,13 +67,13 @@ public class Details extends BaseAction {
 	Device device;
 	public Device getDevice() { return device; }
 	
-	DateTime purchase;
-	public DateTime getPurchase() { return purchase; }
-	public void setPurchase(DateTime purchase) { this.purchase = purchase; }
+	Date purchase;
+	public Date getPurchase() { return purchase; }
+	public void setPurchase(Date purchase) { this.purchase = purchase; }
 	
-	DateTime warranty_end;
-	public DateTime getWarranty_end() { return warranty_end; }
-	public void setWarranty_end(DateTime warranty_end) { this.warranty_end = warranty_end; }
+	Date warranty_end;
+	public Date getWarranty_end() { return warranty_end; }
+	public void setWarranty_end(Date warranty_end) { this.warranty_end = warranty_end; }
 	
 	String comments;
 	public String getComments() { return comments; }

@@ -1,6 +1,11 @@
 package com.ssde.web.struts2.controllers.devices;
 
-import org.joda.time.DateTime;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.ssde.web.struts2.db.actions.BaseAction;
 import com.ssde.web.struts2.model.Device;
@@ -11,6 +16,8 @@ public class New extends BaseAction{
 	 * 
 	 */
 	private static final long serialVersionUID = -7251182788665111237L;
+	SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+	Logger log = LogManager.getLogger("Controller_Devices_New");
 	
 	public String execute() {
 		if(brand!=null && !brand.equals("") && model!=null && !model.equals("")){
@@ -21,8 +28,18 @@ public class New extends BaseAction{
 			d.setService_tag(service_tag);
 			d.setQad_tag(qad_tag);
 			d.setSeries(series);
-			d.setPurchase(purchase);
-			d.setWarranty_end(warranty_end);
+			try {
+				if(!purchase.equals(""))
+					d.setPurchase(new Date(formatter.parse(purchase).getTime()));
+			} catch (ParseException e) {
+				log.error("Purchase date: "+e.getMessage());
+			}
+			try {
+				if(!warranty_end.equals(""))
+					d.setWarranty_end(new Date(formatter.parse(warranty_end).getTime()));
+			} catch (ParseException e) {
+				log.error(e.getMessage());
+			}
 			d.setComments(comments);
 			services.createDevice(d);
 			return redirect("Listing.action");
@@ -54,13 +71,13 @@ public class New extends BaseAction{
 	public String getExpress() { return express; }
 	public void setExpress(String express) { this.express = express; }
 	
-	DateTime purchase;
-	public DateTime getPurchase() { return purchase; }
-	public void setPurchase(DateTime purchase) { this.purchase = purchase; }
+	String purchase;
+	public String getPurchase() { return purchase; }
+	public void setPurchase(String purchase) { this.purchase = purchase; }
 	
-	DateTime warranty_end;
-	public DateTime getWarranty_end() { return warranty_end; }
-	public void setWarranty_end(DateTime warranty_end) { this.warranty_end = warranty_end; }
+	String warranty_end;
+	public String getWarranty_end() { return warranty_end; }
+	public void setWarranty_end(String warranty_end) { this.warranty_end = warranty_end; }
 	
 	String comments;
 	public String getComments() { return comments; }
