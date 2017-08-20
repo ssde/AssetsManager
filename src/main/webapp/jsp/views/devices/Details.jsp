@@ -72,7 +72,7 @@
 					<s:iterator value="repairs">
 						<div class="row">
 							<div class="col-md-12">
-								<s:property value="lod_date"/> - <s:property value="log"/>
+								<s:property value="log_date"/> - <s:property value="log"/>
 							</div>
 						</div>
 					</s:iterator>
