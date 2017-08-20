@@ -25,9 +25,9 @@ public class Repair {
 	public String getLog() { return log; }
 	public void setLog(String log) { this.log = log; }
 
-	Date lod_date;
-	public Date getLod_date() { return lod_date; }
-	public void setLod_date(Date lod_date) { this.lod_date = lod_date; }
+	Date log_date;
+	public Date getLog_date() { return log_date; }
+	public void setLog_date(Date log_date) { this.log_date = log_date; }
 
 	String techname;
 	public String getTechname() { return techname; }
@@ -45,9 +45,9 @@ public class Repair {
 	public Device getDevice() { return device; }
 	public void setDevice(Device device) { this.device = device; }
 	
-	public Repair(String log, Date lod_date, String techname, Set<Part> parts) {
+	public Repair(String log, Date log_date, String techname, Set<Part> parts) {
 		this.log = log;
-		this.lod_date = lod_date;
+		this.log_date = log_date;
 		this.techname = techname;
 		this.parts = parts;
 	}
